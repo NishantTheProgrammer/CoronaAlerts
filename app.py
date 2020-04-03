@@ -1,9 +1,8 @@
-from flask import Flask
+from flask import Flask, request
+from twilio.twiml.messaging_response import MessagingResponse
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return '<h1>#StayAtHome</h1>'
-
-app.run(debug=True)
+@app.route("/")
+def hello():
+    return "<h1>#StayAtHome</h1>"
