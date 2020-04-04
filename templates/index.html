@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='index.css')}}">
+    <title>Corona Alert</title>
+</head>
+<body>
+    <div class="container">
+        <div class="intro">
+            <h1>Get Corona Updates on your WhatsApp</h1>
+            <!-- <img class="whatsAppImg" src="../static/whatsapp.png" alt="whatsapp image"> -->
+            <img class="whatsAppImg" src="{{ url_for('static', filename ='whatsapp.png')}}" alt="whatsapp image">
+
+        </div>
+        <div class="input">
+            <form action="">
+                <input type="tel" placeholder="WhatsApp No.">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
