@@ -9,14 +9,13 @@
 <body>
     <div class="container">
         <div class="intro">
-            <h1>Get Corona Updates on your WhatsApp</h1>
-            <!-- <img class="whatsAppImg" src="../static/whatsapp.png" alt="whatsapp image"> -->
-            <img class="whatsAppImg" src="{{ url_for('static', filename ='whatsapp.png')}}" alt="whatsapp image">
+            <h1>Get Corona Updates on Your <span style="color: #48f348;">WhatsApp</span> &#128172;</h1>
 
         </div>
         <div class="input">
             <form action="">
-                <input type="tel" placeholder="WhatsApp No.">
+                <input type="tel" max="10" placeholder="Enter no. with country code Ex: +918899778899">
+                <input type="submit">
             </form>
         </div>
     </div>
