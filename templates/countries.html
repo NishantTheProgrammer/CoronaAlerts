@@ -7,29 +7,52 @@
     <title>Pick Countries</title>
 </head>
 <body>
-    <!-- <ul>
-        {% for countrie in countries %}
-            <li>{{ countrie[1] }}</li>
-        {% endfor %}
-
-    </ul> -->
 
     <div class="container">
 
 
+
         {% for countrie in countries %}
-            <div class="box" title="{{ countrie[1] }}">
-                <label>
-                    {% set imgName = 'flags/' + countrie[1] + '-Flag-128.png'%}
-                    <img src="{{ url_for('static', filename =imgName)}}" height="100%" width="100%" alt="">
-                    <input type="checkbox" class="checkbox" id="{{ countrie[0] }}" name="countries">
-                    <h1>{{ countrie[1] }}</h1>
-                </label>
-            </div>
+        <div class="box" title="{{ countrie[1] }}">
+            <label>
+                {% set imgName = 'flags/' + countrie[1] + '-Flag-128.png'%}
+                <img src="{{ url_for('static', filename =imgName)}}" height="100%" width="100%" alt="">
+                <input type="checkbox" class="checkbox" id="{{ countrie[0] }}" name="countries">
+                <h1>{{ countrie[1] }}</h1>
+            </label>
+        </div>
         {% endfor %}
+        <script>
+            {% for item in selected %}
+                    document.getElementById({{item.country}}).checked = true;
+            {% endfor %}
+        </script>
         
     </div>
-
-
+    <form action="/thanks" onsubmit="return count();" method="POST">
+        <input type="hidden" name="selected">
+        <input type="hidden" name="phone" value='{{phone}}'>
+        <input type="submit">
+    </form>
 </body>
+<script>
+    function count()
+    {
+        console.log("hello");
+        let selected = "";
+        c=document.getElementsByName('countries');
+        for(let i = 0; i < c.length; i++)
+        {
+            if(c[i].checked == true)
+            {
+                selected += c[i].id + ' ';
+            }
+
+
+        }
+        document.getElementsByName('selected')[0].value = selected.trim();
+        // return false;
+    }
+
+</script>
 </html>

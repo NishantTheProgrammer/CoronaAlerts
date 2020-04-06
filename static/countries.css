@@ -19,6 +19,7 @@ body
 .box
 {
     width: 100%;
+    cursor: pointer;
 
 }
 .box input[type=checkbox]
@@ -38,11 +39,28 @@ body
     text-overflow: ellipsis;
     max-width: 140px;
 }
+
 .checkbox:checked + h1
 {
     color: green;
 }
-
+input[type="submit"]
+{
+    position: fixed;
+    bottom: 10vh;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75); 
+    cursor: pointer;
+    outline: none;
+    border: 0 solid;
+    background-color: rgb(141, 12, 12);
+    color: rgb(235, 235, 235);
+    font-size: 35px;
+    border-radius: 50px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin: 0;
+    padding: 20px 40px;
+}
 
 @media screen and (max-width: 500px)
 {
