@@ -1,0 +1,58 @@
+*
+{
+    padding: 0;
+    margin: 0;
+}
+body
+{
+    
+    background-color: burlywood;
+}
+.container
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-gap: 25px;
+    grid-row-gap: 0px;
+}
+
+.box
+{
+    width: 100%;
+
+}
+.box input[type=checkbox]
+{
+    display: none;
+}
+
+.box h1
+{
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 140px;
+}
+.checkbox:checked + h1
+{
+    color: green;
+}
+
+
+@media screen and (max-width: 500px)
+{
+   .container
+   {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+   } 
+   .box h1
+   {
+       max-width: 70px;
+       font-size: 10px;
+   }
+}

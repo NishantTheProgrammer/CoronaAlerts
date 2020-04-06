@@ -41,7 +41,6 @@ def get():
         85, #Costa Rica
         86, #Cote d'Ivoire
         87, #Croatia
-        88, #Diamond Princess
         89, #Cuba
         90, #Cyprus
         91, #Czechia
@@ -146,7 +145,6 @@ def get():
         204, #Suriname
         205, #Sweden
         206, #Switzerland
-        207, #Taiwan*
         208, #Tanzania
         209, #Thailand
         210, #Togo
@@ -175,9 +173,7 @@ def get():
         242, #Guinea-Bissau
         243, #Mali
         244, #Saint Kitts and Nevis
-        247, #Kosovo
         248, #Burma
-        252, #MS Zaandam
         253, #Botswana
         254, #Burundi
         255, #Sierra Leone

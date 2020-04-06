@@ -35,6 +35,7 @@ def index():
 def countries():
     from Data import get
     return render_template('countries.html', countries = get())
+    # return render_template('countries.html', countries = [])
 
 
 app.run(debug=True)

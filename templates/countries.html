@@ -3,18 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename ='countries.css')}}">
     <title>Pick Countries</title>
 </head>
 <body>
-    <ul>
+    <!-- <ul>
         {% for countrie in countries %}
             <li>{{ countrie[1] }}</li>
         {% endfor %}
-        <li>India</li>
-        <li>India</li>
-        <li>India</li>
-        <li>India</li>
-        <li>India</li>
-    </ul>
+
+    </ul> -->
+
+    <div class="container">
+
+
+        {% for countrie in countries %}
+            <div class="box" title="{{ countrie[1] }}">
+                <label>
+                    {% set imgName = 'flags/' + countrie[1] + '-Flag-128.png'%}
+                    <img src="{{ url_for('static', filename =imgName)}}" height="100%" width="100%" alt="">
+                    <input type="checkbox" class="checkbox" id="{{ countrie[0] }}" name="countries">
+                    <h1>{{ countrie[1] }}</h1>
+                </label>
+            </div>
+        {% endfor %}
+        
+    </div>
+
+
 </body>
 </html>
