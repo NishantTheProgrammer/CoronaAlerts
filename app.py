@@ -5,8 +5,8 @@ import sqlalchemy.exc
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:1234@localhost/corona'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://NishantTheProgra:mypassword@NishantTheProgrammer.mysql.pythonanywhere-services.com/NishantTheProgra$Corona'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:1234@localhost/corona'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://NishantTheProgra:mypassword@NishantTheProgrammer.mysql.pythonanywhere-services.com/NishantTheProgra$Corona'
 db = SQLAlchemy(app)
 
 class User(db.Model):
