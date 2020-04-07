@@ -31,18 +31,21 @@ def index():
 def countries():
     if(request.method == 'POST'):
         try:
-            phone = request.form.get('phone')
-            entry = User(phone = phone)
-            db.session.add(entry)
-            db.session.commit()
+            try:
+                phone = request.form.get('phone')
+                entry = User(phone = phone)
+                db.session.add(entry)
+                db.session.commit()
+            except(Exception):
+                db.session.rollback()
+
+
+            selected = Countries.query.filter_by(phone = phone).all()
+            from Data import get
+            return render_template('countries.html', countries = get(), phone = phone, selected = selected)
+            # return render_template('countries.html', countries = [])
         except(Exception):
-            db.session.rollback()
-
-
-        selected = Countries.query.filter_by(phone = phone).all()
-        from Data import get
-        return render_template('countries.html', countries = get(), phone = phone, selected = selected)
-        # return render_template('countries.html', countries = [])
+            return '<h1>Server in heavy load'
 
     else:
         return redirect("/", code=302)

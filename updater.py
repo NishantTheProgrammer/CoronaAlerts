@@ -3,7 +3,12 @@ def update():
     from Data import get
     from sendMsg import send
     import mysql.connector
-
+    # mydb = mysql.connector.connect(
+    #         host = 'NishantTheProgrammer.mysql.pythonanywhere-services.com',
+    #         user = 'NishantTheProgra',
+    #         password = 'mypassword',
+    #         database = 'NishantTheProgra$Corona'
+    #     )
     mydb = mysql.connector.connect(
             host = 'localhost',
             user = 'root',
@@ -12,14 +17,14 @@ def update():
         )
     cur = mydb.cursor()
     data = get()
-    f = json.load(open('data2.txt', 'r'))
+    f = json.load(open('data.txt', 'r'))
 
     for (item2, item) in zip(f, data):
         if((item[2] != item2[2]) or (item[3] != item2[3])):
             update = item[0]
 
             print(update)
-            s = f'select phone from Countries where country = {update}'
+            s = f'select phone from countries where country = {update}'
             try:
                 cur.execute(s)
                 results = cur.fetchall()
@@ -35,13 +40,14 @@ def update():
     with open('data.txt', 'w') as outfile:
         json.dump(data, outfile)
 
-# update()
-
 
 import time
 starttime=time.time()
 while True:
-    update()
+    try:
+        update()
+    except(Exception):
+        print("Exception")
     print("tick")
     interval = 20
     time.sleep(interval - ((time.time() - starttime) % interval))

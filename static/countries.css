@@ -60,6 +60,7 @@ input[type="submit"]
     transform: translate(-50%, 0);
     margin: 0;
     padding: 20px 40px;
+    backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 }
 
