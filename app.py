@@ -65,10 +65,11 @@ def thanks():
             db.session.add(entry)
             db.session.commit()
         
-        return 'done'
+        return render_template('thanks.html')
 
     else:
-        return redirect("/", code=302)
+        # return redirect("/", code=302)
+        return render_template('thanks.html')
 
 
 app.run(debug=True)
