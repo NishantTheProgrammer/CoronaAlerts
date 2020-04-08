@@ -3,28 +3,23 @@ def update():
     from Data import get
     from sendMsg import send
     import mysql.connector
-    # mydb = mysql.connector.connect(
-    #         host = 'NishantTheProgrammer.mysql.pythonanywhere-services.com',
-    #         user = 'NishantTheProgra',
-    #         password = 'mypassword',
-    #         database = 'NishantTheProgra$Corona'
-    #     )
+
     mydb = mysql.connector.connect(
-            host = 'localhost',
-            user = 'root',
-            password = '1234',
-            database = 'corona'
+            host = 'NishantTheProgrammer.mysql.pythonanywhere-services.com',
+            user = 'NishantTheProgra',
+            password = 'mypassword',
+            database = 'NishantTheProgra$Corona'
         )
     cur = mydb.cursor()
     data = get()
     f = json.load(open('data.txt', 'r'))
-
+    print('Entring into loop')
     for (item2, item) in zip(f, data):
+
         if((item[2] != item2[2]) or (item[3] != item2[3])):
             update = item[0]
-
-            print(update)
             s = f'select phone from countries where country = {update}'
+            print(f's {s}')
             try:
                 cur.execute(s)
                 results = cur.fetchall()
@@ -36,9 +31,11 @@ def update():
                         myfile.write("\n" + result[0])
                         myfile.write("\n" + msg)
             except(Exception):
-                pass
+                print('exception')
     with open('data.txt', 'w') as outfile:
         json.dump(data, outfile)
+
+# update()
 
 
 import time
@@ -47,7 +44,7 @@ while True:
     try:
         update()
     except(Exception):
-        print("Exception")
+        print('Exception')
     print("tick")
-    interval = 20
+    interval = 600
     time.sleep(interval - ((time.time() - starttime) % interval))

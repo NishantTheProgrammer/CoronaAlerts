@@ -4,11 +4,11 @@ def send(to, msg):
     from twilio.http.http_client import TwilioHttpClient
 
     proxy_client = TwilioHttpClient()
-    # proxy_client.session.proxies = {'https': os.environ['https_proxy']}
+    proxy_client.session.proxies = {'https': os.environ['https_proxy']}
 
 
-    client = Client()
-    # client = Client(http_client=proxy_client)
+    #client = Client()
+    client = Client(http_client=proxy_client)
 
     # this is the Twilio sandbox testing number
     from_whatsapp_number='whatsapp:+14155238886'

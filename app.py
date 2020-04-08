@@ -5,8 +5,8 @@ import sqlalchemy.exc
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:1234@localhost/corona'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://NishantTheProgra:mypassword@NishantTheProgrammer.mysql.pythonanywhere-services.com/NishantTheProgra$Corona'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:1234@localhost/corona'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://NishantTheProgra:mypassword@NishantTheProgrammer.mysql.pythonanywhere-services.com/NishantTheProgra$Corona'
 db = SQLAlchemy(app)
 
 class User(db.Model):
@@ -31,21 +31,18 @@ def index():
 def countries():
     if(request.method == 'POST'):
         try:
-            try:
-                phone = request.form.get('phone')
-                entry = User(phone = phone)
-                db.session.add(entry)
-                db.session.commit()
-            except(Exception):
-                db.session.rollback()
-
-
-            selected = Countries.query.filter_by(phone = phone).all()
-            from Data import get
-            return render_template('countries.html', countries = get(), phone = phone, selected = selected)
-            # return render_template('countries.html', countries = [])
+            phone = request.form.get('phone')
+            entry = User(phone = phone)
+            db.session.add(entry)
+            db.session.commit()
         except(Exception):
-            return '<h1>Server in heavy load'
+            db.session.rollback()
+
+
+        selected = Countries.query.filter_by(phone = phone).all()
+        from Data import get
+        return render_template('countries.html', countries = get(), phone = phone, selected = selected)
+        # return render_template('countries.html', countries = [])
 
     else:
         return redirect("/", code=302)
@@ -62,17 +59,14 @@ def thanks():
                 db.session.commit()
         except(Exception):
             pass
-        
+
         for item in items:
             entry = Countries(phone = phone, country=item)
             db.session.add(entry)
             db.session.commit()
-        
+
         return render_template('thanks.html')
 
     else:
         # return redirect("/", code=302)
         return render_template('thanks.html')
-
-if __name__ == "__main__":
-    app.run(debug=True)
