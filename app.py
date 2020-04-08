@@ -70,3 +70,5 @@ def thanks():
     else:
         # return redirect("/", code=302)
         return render_template('thanks.html')
+
+app.run(debug=True)

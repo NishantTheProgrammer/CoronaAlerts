@@ -13,11 +13,26 @@
 
         </div>
         <div class="input">
-            <form action="/countries" method="POST">
+            <form action="/countries" method="POST" onsubmit="return validatePhone();">
                 <input type="tel" max="10" name="phone" placeholder="Enter no. with country code Ex: +918899778899">
                 <input type="submit">
             </form>
         </div>
     </div>
 </body>
+<script>
+    function validatePhone()
+    {
+        isValid = true;
+        phone = document.querySelector('input[name="phone"]').value;
+        if(phone[0] != '+' || phone.length > 15 || isNaN(phone.substring(1, phone.length)))
+        {
+ 
+            document.querySelector('input[name="phone"]').value = ""
+            document.querySelector('input[name="phone"]').placeholder = "Use this Format: +918899778899"
+            isValid = false;
+        }
+        return isValid;
+    }
+</script>
 </html>
