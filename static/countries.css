@@ -66,13 +66,18 @@ input[type="submit"]
 
 @media screen and (max-width: 500px)
 {
-   .container
-   {
-        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-   } 
-   .box h1
-   {
-       max-width: 70px;
-       font-size: 10px;
-   }
+    .container
+    {
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    } 
+    .box h1
+    {
+        max-width: 70px;
+        font-size: 10px;
+    }
+    input[type="submit"]
+    {
+        font-size: 30px;
+        padding: 10px 20px; 
+    }
 }
